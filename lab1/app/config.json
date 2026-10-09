@@ -1,0 +1,6 @@
+{
+    "host": "localhost",
+    "port": 5432,
+    "dbname": "appdb",
+    "connect_timeout": 5
+}

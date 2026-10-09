@@ -1,0 +1,22 @@
+services:
+  db:
+    build: ./db
+    image: rzps-postgres:18
+    container_name: rzps-db
+    environment:
+      POSTGRES_PASSWORD: postgres_demo_password
+    volumes:
+      - db_data:/var/lib/postgresql
+
+  pinger:
+    build: ./app
+    image: rzps-pinger:1.0
+    container_name: rzps-pinger
+    env_file:
+      - ./pinger.env
+    volumes:
+      - pinger_logs:/logs
+
+volumes:
+  db_data:
+  pinger_logs:

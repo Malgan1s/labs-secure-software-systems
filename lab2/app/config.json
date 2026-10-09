@@ -1,0 +1,11 @@
+{
+    "host": "db",
+    "port": 5432,
+    "dbname": "appdb",
+    "connect_timeout": 5,
+    "keepalives": 1,
+    "keepalives_idle": 10,
+    "keepalives_interval": 5,
+    "keepalives_count": 3,
+    "tcp_user_timeout": 15000
+}
