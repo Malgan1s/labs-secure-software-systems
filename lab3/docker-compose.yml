@@ -1,0 +1,30 @@
+services:
+  db:
+    build: ./db
+    image: rzps-shop-db:1.0
+    environment:
+      POSTGRES_PASSWORD: postgres_demo_password
+    volumes:
+      - db_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  app:
+    build: ./app
+    image: rzps-shop:1.0
+    env_file:
+      - ./app.env
+    volumes:
+      - app_logs:/logs
+    depends_on:
+      db:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+
+volumes:
+  db_data:
+  app_logs:
