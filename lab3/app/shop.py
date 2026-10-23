@@ -22,6 +22,7 @@ TABLES = {
 
 
 class InputError(Exception):
+    pass
 
 # ---------- логи и ошибки ----------
 
